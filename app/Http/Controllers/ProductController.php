@@ -9,7 +9,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = ['Product 1', 'Product 2', 'Product 3'];
-        
+
         return $products;
+    }
+
+    public function show($id)
+    {
+        return "Mostrando produto id: {$id}";
     }
 }

@@ -17,6 +17,7 @@ Route::get('contato', function () {
 });
 
 Route::get('produtos', 'ProductController@index');
+Route::get('produtos/{id}', 'ProductController@show');
 /*
 Route::get('produtos/{id?}', function ($id = '') {
     return "lista de produtos do id: {$id}";
