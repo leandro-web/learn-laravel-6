@@ -16,9 +16,11 @@ Route::get('contato', function () {
     return view('contato');
 });
 
+Route::get('produtos', 'ProductController@index');
+/*
 Route::get('produtos/{id?}', function ($id = '') {
     return "lista de produtos do id: {$id}";
-});
+});*/
 
 Route::get('categorias/{param_1}', function($param_1) {
     return "Produtos da categoria: {$param_1}";
