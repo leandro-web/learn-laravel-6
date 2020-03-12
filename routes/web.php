@@ -26,7 +26,7 @@ Route::get('produtos/{id}', 'ProductController@show');
 Route::delete('produtos/{id}', 'ProductController@destroy');
 
 /* Rotas criadas usando resource */
-Route::resource('categorias', 'CategoryController');
+Route::resource('categorias', 'CategoryController')->middleware('auth');
 
 
 /*
