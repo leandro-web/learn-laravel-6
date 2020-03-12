@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return 'Mostra categorias';
+        $data = date('Y');
+        $titulo = "Aprendendo Laravel";
+        return view('categorias', compact('data', 'titulo'));
     }
 
     /**
