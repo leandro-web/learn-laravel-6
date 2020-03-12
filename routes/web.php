@@ -16,9 +16,21 @@ Route::get('contato', function () {
     return view('contato');
 });
 
+/* Exibe os produtos */
 Route::get('produtos', 'ProductController@index');
-Route::get('produtos/{id}', 'ProductController@show');
+/* Exibe formulario de cadastro */
 Route::get('produtos/create', 'ProductController@create');
+/* Cadastra no banco */
+Route::post('produtos', 'ProductController@store');
+/* Exibe formulario de edição */
+Route::get('produtos/{id}/edit', 'ProductController@edit');
+/* Edita um produto no banco */
+Route::put('produtos/{id}', 'ProductController@update');
+/* Exibe um produto */
+Route::get('produtos/{id}', 'ProductController@show');
+/* Deleta um produto */
+Route::delete('produtos/{id}', 'ProductController@destroy');
+
 /*
 Route::get('produtos/{id?}', function ($id = '') {
     return "lista de produtos do id: {$id}";
