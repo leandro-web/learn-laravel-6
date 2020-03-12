@@ -11,7 +11,9 @@ class ProductController extends Controller
         $data = date('Y');
         $titulo = "Mostrando todos os produtos";
         $idade = 19;
-        return view('admin.pages.produtos.index', compact('data', 'titulo', 'idade'));
+        $lista = ['Item 1','Item 2','Item 3','Item 4','Item 5'];
+        //$lista = [];
+        return view('admin.pages.produtos.index', compact('data', 'titulo', 'idade', 'lista'));
     }
 
     public function show($id)
