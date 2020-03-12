@@ -17,4 +17,9 @@ class ProductController extends Controller
     {
         return "Mostrando produto id: {$id}";
     }
+
+    public function create()
+    {
+        return "Exibindo o form para cadastro de um novo produto";
+    }
 }
