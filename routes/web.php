@@ -17,6 +17,7 @@ Route::get('contato', function () {
 });
 
 /* Rotas criadas manualmente */
+/*
 Route::get('produtos', 'ProductController@index');
 Route::get('produtos/create', 'ProductController@create');
 Route::post('produtos', 'ProductController@store');
@@ -24,6 +25,8 @@ Route::get('produtos/{id}/edit', 'ProductController@edit');
 Route::put('produtos/{id}', 'ProductController@update');
 Route::get('produtos/{id}', 'ProductController@show');
 Route::delete('produtos/{id}', 'ProductController@destroy');
+*/
+Route::resource('produtos', 'ProductController');
 
 /* Rotas criadas usando resource */
 //Route::resource('categorias', 'CategoryController')->middleware('auth');

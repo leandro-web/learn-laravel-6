@@ -8,6 +8,8 @@
 
     <hr>
 
+    <a href="/produtos/create">Cadastrar</a>
+
     @component('admin.components.card')
         @slot('titulo')
             <h1>Título do card</h1>

@@ -23,22 +23,22 @@ class ProductController extends Controller
 
     public function create()
     {
-        return "Exibindo o form para cadastro de um novo produto";
+        return view('admin.pages.produtos.create');
+    }
+
+    public function store(Request $request)
+    {
+        dd('Cadastrando');
     }
 
     public function edit($id)
     {
-        return "Exibindo o form para edição do produto: {$id}";
+        return view('admin.pages.produtos.edit', compact('id'));
     }
 
-    public function store()
+    public function update(Request $request, $id)
     {
-        return "Cadastrando um novo produto no banco";
-    }
-
-    public function update($id)
-    {
-        return "Editando o produto: {$id} no banco";
+        dd("Editando o produto: {$id}");
     }
 
     public function destroy($id)
