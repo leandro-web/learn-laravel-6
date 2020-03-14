@@ -28,7 +28,18 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd('Cadastrando');
+        //dd($request->all());
+        /*dd($request->only(['name','description']));
+        dd($request->input('teste','default'));
+        dd($request->except('_token'));
+        dd($request->has('name'));
+        dd($request->name);*/
+        //dd($request->file('foto')->isValid());
+
+        if($request->file('foto')->isValid())
+        {
+            dd($request->foto->store('produtos'));
+        }
     }
 
     public function edit($id)
