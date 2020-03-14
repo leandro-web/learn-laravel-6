@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateProdutoRequest;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -26,13 +27,18 @@ class ProductController extends Controller
         return view('admin.pages.produtos.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateProdutoRequest $request)
     {
+
+        /*
         $request->validate([
             'name' => 'required|min:3|max:255',
             'description' => 'nullable|min:3|max:10000',
             'foto' => 'required|image',
         ]);
+        */
+
+
         //dd($request->all());
         /*dd($request->only(['name','description']));
         dd($request->input('teste','default'));
