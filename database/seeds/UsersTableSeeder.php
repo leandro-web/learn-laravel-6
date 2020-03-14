@@ -12,10 +12,17 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        /* Para criar 10 usuarios randomicos no banco */
+
+        factory(User::class, 10)->create();
+
+        /* Para criar 1 usuario no banco */
+        /*
         User::create([
             'name' => 'Leandro Rafael de Oliveira',
             'email' =>'leandro-web@hotmail.com',
             'password' => bcrypt('123456'),
         ]);
+        */
     }
 }
