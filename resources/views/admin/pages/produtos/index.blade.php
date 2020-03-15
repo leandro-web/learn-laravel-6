@@ -47,6 +47,39 @@
             Não existe itens
         @endforelse
     </ul>
+
+    <hr>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($produtos as $item)
+                <tr>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->price }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success btn-sm">Detalhe</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm">Deletar</button>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">Não existe produtos</td>
+                </tr>
+             @endforelse
+
+        </tbody>
+      </table>
+
+      {!! $produtos->links() !!}
+
     
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateProdutoRequest;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,8 +14,11 @@ class ProductController extends Controller
         $titulo = "Mostrando todos os produtos";
         $idade = 19;
         $lista = ['Item 1','Item 2','Item 3','Item 4','Item 5'];
+
+        //$produtos = Produto::all(); pegando todos sem paginação
+        $produtos = Produto::paginate(10); /* 15 é o valor default caso deixar vazio */
         //$lista = [];
-        return view('admin.pages.produtos.index', compact('data', 'titulo', 'idade', 'lista'));
+        return view('admin.pages.produtos.index', compact('data', 'titulo', 'idade', 'lista', 'produtos'));
     }
 
     public function show($id)
