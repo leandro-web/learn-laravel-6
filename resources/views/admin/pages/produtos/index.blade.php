@@ -63,9 +63,15 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <a href="produtos/{{ $item->id }}" class="btn btn-outline-success btn-sm">Detalhe</a>
-                        <a href="" class="btn btn-outline-primary btn-sm">Editar</a>
-                        <a href="" class="btn btn-outline-danger btn-sm">Deletar</a>
+                        <a href="produtos/{{ $item->id }}" class="btn btn-outline-success btn-sm float-left">Detalhe</a>
+                        
+                        <a href="" class="btn btn-outline-primary btn-sm float-left mx-3">Editar</a>
+
+                        <form action="produtos/{{ $item->id }}" method="POST" class="float-left">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+                        </form>
                     </td>
                 </tr>
             @empty
