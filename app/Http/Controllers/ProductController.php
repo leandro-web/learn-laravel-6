@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $request;
+    private $repository;
+
+    public function __construct(Request $request, Produto $produto)
+    {
+        $this->request = $request;
+        $this->repository = $produto;
+    }
+
     public function index()
     {
         $data = date('Y');
@@ -107,5 +116,28 @@ class ProductController extends Controller
         $produto->delete();
 
         return redirect('produtos');
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except(['_token']);
+
+        $produtos = $this->repository->search($request->filter);
+
+        $data = date('Y');
+        $titulo = "Produtos encontrados";
+        $idade = 19;
+        $lista = ['Item 1','Item 2','Item 3','Item 4','Item 5'];
+
+        return view('admin.pages.produtos.index',[
+            'produtos' => $produtos,
+            'titulo' => $titulo,
+            'idade' => $idade,
+            'lista' => $lista,
+            'data' => $data,
+            'filters' => $filters,
+        ]);
+
+        
     }
 }

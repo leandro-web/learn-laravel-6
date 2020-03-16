@@ -46,7 +46,15 @@
 -->
 
     <div class="my-3">
-        <a href="/produtos/create" class="btn btn-success">Cadastrar</a>
+        <a href="/produtos/create" class="btn btn-success float-left">Cadastrar</a>
+
+        <form action="/produtos/search" method="POST" class="form form-inline float-right">
+            @csrf
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="filter" class="form-control" placeholder="Filtrar:" value="{{$filters['filter'] ?? ''}}">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">OK</button>
+        </form>
     </div>
     
     <table class="table table-hover">
@@ -83,8 +91,13 @@
         </tbody>
     </table>
 
-    {!! $produtos->links() !!}
-
+    @if (isset($filters))
+        {!! $produtos->appends($filters)->links() !!}
+    @else
+        {!! $produtos->links() !!}
+    @endif
+    
+     
 
     
 

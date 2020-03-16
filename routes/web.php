@@ -26,6 +26,7 @@ Route::put('produtos/{id}', 'ProductController@update');
 Route::get('produtos/{id}', 'ProductController@show');
 Route::delete('produtos/{id}', 'ProductController@destroy');
 */
+Route::any('produtos/search', 'ProductController@search');
 Route::resource('produtos', 'ProductController');
 
 /* Rotas criadas usando resource */
