@@ -60,10 +60,18 @@ class ProductController extends Controller
         dd($request->name);*/
         //dd($request->file('foto')->isValid());
 
-        if($request->file('foto')->isValid())
+        /*
+        if($request->file('image')->isValid())
         {
-            dd($request->foto->store('produtos'));
+            dd($request->image->store('produtos'));
         }
+        */
+
+        $data = $request->only('name', 'description', 'price');
+        Produto::create($data);
+
+        return redirect('produtos');
+
     }
 
     public function edit($id)
