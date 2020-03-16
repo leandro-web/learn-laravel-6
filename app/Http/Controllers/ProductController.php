@@ -23,7 +23,16 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        return "Mostrando produto id: {$id}";
+        //$produto = Produto::where('id',$id)->get(); //retorna um array
+        //$produto = Produto::where('id',$id)->first(); //Retorna item especifico opção 1
+        $produto = Produto::find($id); //Retorna item especifico opção 2
+
+        if(!$produto)
+            return redirect()->back();
+
+        return view('admin.pages.produtos.show',[
+            'produto' => $produto,
+        ]);
     }
 
     public function create()

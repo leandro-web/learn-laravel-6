@@ -3,12 +3,10 @@
 @section('title', 'Gestão de produtos')
 
 @section('content')
-
+    <h1>{{$titulo}}</h1>
+<!--
     @include('admin.includes.alerts', ['texto' => 'Texto do alerta'])
 
-    <hr>
-
-    <a href="/produtos/create">Cadastrar</a>
 
     @component('admin.components.card')
         @slot('titulo')
@@ -17,8 +15,6 @@
         Um card de exemplo
     @endcomponent
     <hr>
-
-    <h1>{{$titulo}}</h1>
 
     <p>{{$data}}</p>
 
@@ -47,9 +43,12 @@
             Não existe itens
         @endforelse
     </ul>
+-->
 
-    <hr>
-
+    <div class="my-3">
+        <a href="/produtos/create" class="btn btn-success">Cadastrar</a>
+    </div>
+    
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -64,21 +63,22 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-success btn-sm">Detalhe</button>
-                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm">Deletar</button>
+                        <a href="produtos/{{ $item->id }}" class="btn btn-outline-success btn-sm">Detalhe</a>
+                        <a href="" class="btn btn-outline-primary btn-sm">Editar</a>
+                        <a href="" class="btn btn-outline-danger btn-sm">Deletar</a>
                     </td>
                 </tr>
             @empty
                 <tr>
                     <td colspan="3">Não existe produtos</td>
                 </tr>
-             @endforelse
+            @endforelse
 
         </tbody>
-      </table>
+    </table>
 
-      {!! $produtos->links() !!}
+    {!! $produtos->links() !!}
+
 
     
 
