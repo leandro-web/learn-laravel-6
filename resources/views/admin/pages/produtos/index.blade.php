@@ -60,6 +60,7 @@
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
+                <th scope="col">Imagem</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Ação</th>
@@ -68,6 +69,12 @@
         <tbody>
             @forelse ($produtos as $item)
                 <tr>
+                    <td>
+                        @if ($item->image)
+                            <img src="{{ url("storage/$item->image") }}" style="width:100px" alt="{{ $item->name }}">
+                        @endif
+                        
+                    </td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
@@ -84,7 +91,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3">Não existe produtos</td>
+                    <td colspan="4">Não existe produtos</td>
                 </tr>
             @endforelse
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateProdutoRequest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -77,6 +78,14 @@ class ProductController extends Controller
         */
 
         $data = $request->only('name', 'description', 'price');
+
+        if($request->hasFile('image') && $request->image->isValid()){
+            $imagePath = $request->image->store('produtos');
+
+            $data['image'] = $imagePath;
+        }
+
+
         Produto::create($data);
 
         return redirect('produtos');
@@ -101,7 +110,19 @@ class ProductController extends Controller
         if(!$produto)
             return redirect()->back();
 
-        $produto->update($request->all());
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->image->isValid()){
+            
+            if($produto->image && Storage::exists($produto->image)){
+                Storage::delete($produto->image);
+            }
+
+            $imagePath = $request->image->store('produtos');
+            $data['image'] = $imagePath;
+        }
+
+        $produto->update($data);
 
         return redirect('produtos');
     }
@@ -112,6 +133,10 @@ class ProductController extends Controller
 
         if(!$produto)
             return redirect()->back();
+
+        if($produto->image && Storage::exists($produto->image)){
+            Storage::delete($produto->image);
+        }
 
         $produto->delete();
 
