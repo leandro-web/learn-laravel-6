@@ -76,12 +76,24 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        return view('admin.pages.produtos.edit', compact('id'));
+        $produto = Produto::find($id); //Retorna item especifico opção 2
+
+        if(!$produto)
+            return redirect()->back();
+
+        return view('admin.pages.produtos.edit', compact('produto'));
     }
 
     public function update(Request $request, $id)
     {
-        dd("Editando o produto: {$id}");
+        $produto = Produto::find($id);
+
+        if(!$produto)
+            return redirect()->back();
+
+        $produto->update($request->all());
+
+        return redirect('produtos');
     }
 
     public function destroy($id)

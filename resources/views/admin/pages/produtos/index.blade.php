@@ -65,7 +65,7 @@
                     <td>
                         <a href="produtos/{{ $item->id }}" class="btn btn-outline-success btn-sm float-left">Detalhe</a>
                         
-                        <a href="" class="btn btn-outline-primary btn-sm float-left mx-3">Editar</a>
+                        <a href="produtos/{{ $item->id }}/edit" class="btn btn-outline-primary btn-sm float-left mx-3">Editar</a>
 
                         <form action="produtos/{{ $item->id }}" method="POST" class="float-left">
                             @csrf
